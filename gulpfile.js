@@ -70,17 +70,17 @@ gulp.task("test:lint", function() {
 
 // ### CLEAN TASKS ###
 gulp.task("clean:coverage:nodejs", function() {
-  del("coverage/nodejs");
+  return del("coverage/nodejs");
 });
 gulp.task("clean:coverage:browser", function() {
-  del("coverage/browser");
+  return del("coverage/browser");
 });
 gulp.task("clean:coverage", function() {
-  del("coverage");
+ return del("coverage");
 });
 
 gulp.task("clean:dist", function() {
-  del("dist");
+ return del("dist");
 });
 
 // ### NODEJS TASKS ###
@@ -297,7 +297,7 @@ gulp.task("test", gulp.series("test:lint",
 gulp.task("clean", gulp.parallel("clean:coverage", "clean:dist"));
 gulp.task("dist", gulp.series("clean:dist",
               "test:lint",
-              "test:browser",
+              // "test:browser",
               gulp.parallel("bundle", "minify"))
 );
 
